@@ -22,10 +22,10 @@ const Movies = () => {
 
   return (
     <div>
-      <h1 className="text-white text-5xl font-bold mx-8 mt-8">
+      <h1 className="text-white text-3xl md:text-4xl font-bold mx-8 mt-8">
         Top Popular Movies
       </h1>
-      <div className="grid grid-cols-4">
+      <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {isLoading &&
           movies.map((movie) => {
             return <MovieCard key={movie.id} movie={movie}></MovieCard>;

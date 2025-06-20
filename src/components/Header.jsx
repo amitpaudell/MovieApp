@@ -31,18 +31,23 @@ const Header = () => {
       navigate(`/search?q=${search}`);
     }
   }
+  function handleSearch(e) {
+    setSearch(e.target.value);
+  }
 
   function gotoHome() {
     navigate('/');
   }
   return (
     <nav className="container mx-auto px-16 bg-[#151515]">
-      <div className="flex justify-between items-center">
-        <div className="w-24 h-24 mt-6 cursor-pointer " onClick={gotoHome}>
-          <h1 className=" text-3xl text-[#FFC107] font-bold">Streamly</h1>
+      <div className="w-full h-24 flex flex-row items-center justify-between ">
+        <div className="cursor-pointer " onClick={gotoHome}>
+          <h1 className="text-xl md:text-3xl text-[#FFC107] font-bold">
+            Streamly
+          </h1>
         </div>
 
-        <div className="flex space-x-18 text-white text-3xl hover:no-underline">
+        <div className="flex flex-row items-center space-x-5 md:space-x-7 text-white text-xl md:text-3xl hover:no-underline">
           {navigations.map((item) => {
             return (
               <NavLink key={item.name} to={item.href}>
@@ -57,7 +62,7 @@ const Header = () => {
               } placeholder:text-lg focus:outline-none text-xl`}
               type="text"
               placeholder="Search your movies...."
-              onChange={(e) => setSearch(e.target.value)}
+              onChange={(e) => handleSearch(e)}
             />
           </form>
           <div className="cursor-pointer" onClick={handleClick}>
