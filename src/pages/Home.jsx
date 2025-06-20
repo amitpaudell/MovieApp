@@ -24,12 +24,12 @@ const Home = () => {
     fetchMovies();
   }, []);
 
-  const images = movies.slice(0, 5).map((movie) => ({
+  const images = movies.slice(0, 7).map((movie) => ({
     original: `https://image.tmdb.org/t/p/original${movie.backdrop_path}`,
     thumbnail: `https://image.tmdb.org/t/p/w500${movie.backdrop_path}`,
   }));
 
-  const texts = movies.slice(0, 5).map((movie) => ({
+  const texts = movies.slice(0, 7).map((movie) => ({
     movieName: movie.original_title,
     releaseDate: movie.release_date,
     description: movie.overview.slice(0, 200),

@@ -4,6 +4,7 @@ import TvShows from '../pages/TvShows';
 import Movies from '../pages/Movies';
 import Search from '../pages/Search';
 import Home from '../pages/Home';
+import MovieDetails from '../pages/MovieDetails';
 
 const router = createBrowserRouter([
   {
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
       {
         path: 'search',
         element: <Search></Search>,
+      },
+      {
+        path: 'detail',
+        element: <MovieDetails></MovieDetails>,
       },
     ],
   },
