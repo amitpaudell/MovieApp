@@ -18,8 +18,8 @@ const Movies = () => {
     setLoading(true);
   };
 
-  function handleDetail(id) {
-    navigate(`/detail?q=${id}`);
+  function handleDetail(id, source) {
+    navigate(`/detail?q=${id}&source=${source}`);
   }
   useEffect(() => {
     fetchMovies();
@@ -34,8 +34,11 @@ const Movies = () => {
         {isLoading &&
           movies.map((movie) => {
             return (
-              <div key={movie.id} onClick={() => handleDetail(movie.id)}>
-                <MovieCard movie={movie}></MovieCard>;
+              <div
+                key={movie.id}
+                onClick={() => handleDetail(movie.id, 'movie')}
+              >
+                <MovieCard movie={movie}></MovieCard>
               </div>
             );
           })}

@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
 import TvCard from '../components/TvCard';
+import { useNavigate } from 'react-router-dom';
 
 const TvShows = () => {
   const API_KEY = 'c28047bc034a0694cbb166947b5e6731';
   const [tvshows, setTvshows] = useState();
   const [isLoading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const fetchTvshows = async () => {
     const res = await fetch(`
@@ -15,6 +17,9 @@ const TvShows = () => {
 
     setLoading(true);
   };
+  function handleDetail(id, source) {
+    navigate(`/detail?q=${id}&source=${source}`);
+  }
 
   useEffect(() => {
     fetchTvshows();
@@ -28,7 +33,11 @@ const TvShows = () => {
       <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {isLoading &&
           tvshows.map((tv) => {
-            return <TvCard key={tv.id} tv={tv}></TvCard>;
+            return (
+              <div key={tv.id} onClick={() => handleDetail(tv.id, 'tv')}>
+                <TvCard tv={tv}></TvCard>;
+              </div>
+            );
           })}
       </div>
     </div>

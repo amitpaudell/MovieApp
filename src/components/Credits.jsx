@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-const Credits = ({ movieid }) => {
+const Credits = ({ movieid, source }) => {
   const [casts, setCast] = useState([]);
   const API_KEY = 'c28047bc034a0694cbb166947b5e6731';
 
@@ -7,11 +7,11 @@ const Credits = ({ movieid }) => {
 
   const fetchMovies = async () => {
     const res = await fetch(`
-    https://api.themoviedb.org/3/movie/${movieid}/credits?api_key=${API_KEY}`);
+    https://api.themoviedb.org/3/${source}/${movieid}/credits?api_key=${API_KEY}`);
 
     const result = await res.json();
 
-    setCast(result.cast);
+    setCast(result.cast || []);
 
     setLoading(true);
   };
@@ -30,9 +30,13 @@ const Credits = ({ movieid }) => {
               <div key={cast.id}>
                 <div className="w-20 md:max-w-30">
                   <img
-                    src={`https://image.tmdb.org/t/p/w500/${cast.profile_path}`}
-                    alt=""
-                    className=""
+                    src={
+                      cast.profile_path
+                        ? `https://image.tmdb.org/t/p/w500${cast.profile_path}`
+                        : '/fallback-profile.png' // You can use a local fallback image
+                    }
+                    alt={cast.name}
+                    className="rounded-md"
                   />
                 </div>
                 <h3 className="max-w-25">{cast.name}</h3>

@@ -2,12 +2,14 @@ import { useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import SearchCard from '../components/SearchCard';
 
+import { useNavigate } from 'react-router-dom';
+
 const Search = () => {
   const location = useLocation();
   const query = new URLSearchParams(location.search).get('q') || '';
-  console.log(query);
 
   const [movies, setMovies] = useState(null);
+  const navigate = useNavigate();
   const API_KEY = 'c28047bc034a0694cbb166947b5e6731';
 
   const [isLoading, setLoading] = useState(false);
@@ -22,6 +24,10 @@ const Search = () => {
     setLoading(true);
   };
 
+  function handleDetail(id, source) {
+    navigate(`/detail?q=${id}&source=${source}`);
+  }
+
   useEffect(() => {
     fetchMovies();
   }, [query]);
@@ -35,7 +41,14 @@ const Search = () => {
         {isLoading &&
           movies.length > 0 &&
           movies.map((smovie) => {
-            return <SearchCard key={smovie.id} smovie={smovie}></SearchCard>;
+            return (
+              <div
+                key={smovie.id}
+                onClick={() => handleDetail(smovie.id, smovie.media_type)}
+              >
+                <SearchCard smovie={smovie}></SearchCard>;
+              </div>
+            );
           })}
       </div>
     </div>

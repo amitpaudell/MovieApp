@@ -2,8 +2,11 @@ import { useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import Credits from '../components/Credits';
 const MovieDetails = () => {
-  const location = useLocation();
-  const query = new URLSearchParams(location.search).get('q') || '';
+  const { search } = useLocation();
+  const queryParams = new URLSearchParams(search);
+
+  const query = queryParams.get('q'); // The ID or search term
+  const source = queryParams.get('source');
 
   const [movies, setMovies] = useState(null);
   const API_KEY = 'c28047bc034a0694cbb166947b5e6731';
@@ -12,7 +15,7 @@ const MovieDetails = () => {
 
   const fetchMovies = async () => {
     const res = await fetch(`
-      https://api.themoviedb.org/3/movie/${query}?api_key=${API_KEY}&language=en-US`);
+      https://api.themoviedb.org/3/${source}/${query}?api_key=${API_KEY}&language=en-US`);
 
     const result = await res.json();
     setMovies(result);
@@ -39,14 +42,14 @@ const MovieDetails = () => {
           <div className="flex flex-col space-y-12  md:w-full">
             <div>
               <h1 className="text-3xl md:text-5xl font-bold ">
-                {movies.original_title}
+                {movies.original_title || movies.original_name}
               </h1>
             </div>
             <div className="grid grid-cols-2 space-y-4 md:flex md:flex-row space-x-5.5">
-              {movies.genres.map((genre) => {
+              {movies?.genres?.map((genre) => {
                 return (
                   <div
-                    key={genre.name}
+                    key={genre.id || genre.name}
                     className="md:w-40  border rounded-full text-center self-baseline py-2"
                   >
                     {genre.name}
@@ -59,7 +62,7 @@ const MovieDetails = () => {
             </div>
             <div>
               <h3 className="text-2xl font-bold">Top Casts</h3>
-              <Credits key={query} movieid={query}></Credits>
+              <Credits source={source} key={query} movieid={query}></Credits>
             </div>
           </div>
         </div>
