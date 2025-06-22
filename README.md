@@ -1,12 +1,59 @@
-# React + Vite
+# Movie Web App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+The Movie Web App is a modern, responsive web application built using React.js that allows users to explore and discover a wide range of movies and TV shows. It is designed with a focus on performance, responsiveness, and an engaging user experience.
 
-Currently, two official plugins are available:
+## 🚀 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+🎞️ Sliding image gallery for showcasing trending and top-rated movies (built with React Image Gallery or Swiper.js)
 
-## Expanding the ESLint configuration
+🔍 Search functionality to filter and find movies in real-time using API integration
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+🎬 Interactive movie cards that reveal detailed information upon click
+
+📱 Responsive design optimized for desktops, tablets, and mobile devices
+
+🧩 Component-based architecture for maintainability and scalability
+
+🔁 Client-side routing using React Router DOM
+
+🌐 API data fetched from The Movie Database (TMDb)
+
+🛠️ Technologies Used
+React.js – Frontend library
+
+Tailwind CSS – Utility-first CSS framework for responsive design
+
+JavaScript (ES6+) – Programming language
+
+React Router DOM – Client-side routing
+
+Fetch API / Axios – For making asynchronous API requests
+
+TMDb API – Source for movie and TV show data
+
+react-image-gallery – For sliding gallery UI
+
+📂 Functionality Overview
+🔹 Sliding Image Gallery
+The homepage features a dynamic sliding gallery that presents trending or popular titles. It is implemented using modern carousel libraries like Swiper.js, offering smooth transitions and mobile-friendly swipes.
+
+🔹 Search Functionality
+Users can search for any movie or TV show. The app fetches real-time data using fetch() or Axios with debounce optimizations. Results are displayed as interactive cards.
+
+🔹 Detailed Movie Page
+Clicking on a movie card routes the user to a dedicated page that shows:
+
+Title, release date, genre, and overview
+
+Cast and crew information
+
+Poster image and backdrop
+
+User ratings and popularity index
+
+🔹 Responsiveness
+Built with Tailwind CSS, the layout adapts fluidly to different screen sizes using:
+
+flex, grid, and media queries
+
+Tailwind's responsive breakpoints (sm, md, lg, xl)
