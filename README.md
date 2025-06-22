@@ -18,7 +18,7 @@ The Movie Web App is a modern, responsive web application built using React.js t
 
 🌐 API data fetched from The Movie Database (TMDb)
 
-🛠️ Technologies Used
+## 🛠️ Technologies Used
 React.js – Frontend library
 
 Tailwind CSS – Utility-first CSS framework for responsive design
@@ -33,27 +33,6 @@ TMDb API – Source for movie and TV show data
 
 react-image-gallery – For sliding gallery UI
 
-📂 Functionality Overview
-🔹 Sliding Image Gallery
-The homepage features a dynamic sliding gallery that presents trending or popular titles. It is implemented using modern carousel libraries like Swiper.js, offering smooth transitions and mobile-friendly swipes.
 
-🔹 Search Functionality
-Users can search for any movie or TV show. The app fetches real-time data using fetch() or Axios with debounce optimizations. Results are displayed as interactive cards.
 
-🔹 Detailed Movie Page
-Clicking on a movie card routes the user to a dedicated page that shows:
-
-Title, release date, genre, and overview
-
-Cast and crew information
-
-Poster image and backdrop
-
-User ratings and popularity index
-
-🔹 Responsiveness
-Built with Tailwind CSS, the layout adapts fluidly to different screen sizes using:
-
-flex, grid, and media queries
-
-Tailwind's responsive breakpoints (sm, md, lg, xl)
+![image alt](https://github.com/amitpaudell/MovieApp/blob/1893ef06a2833b17fe8a9a6d6fe55b1c01e10bb9/screenshot.jpg)
